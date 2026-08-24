@@ -1,0 +1,16 @@
+alembic<2,>=1.13
+confluent-kafka<3,>=2.6
+fastapi<1,>=0.115
+prometheus-client<1,>=0.21
+pydantic-settings<3,>=2.6
+psycopg[binary]<4,>=3.2
+sqlalchemy<3,>=2.0
+uvicorn[standard]<1,>=0.32
+
+[dev]
+ruff<1,>=0.8
+
+[test]
+httpx<1,>=0.27
+pytest<9,>=8.3
+pytest-asyncio<1,>=0.24

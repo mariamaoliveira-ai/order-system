@@ -1,0 +1,10 @@
+pyproject.toml
+src/order_consumer/__init__.py
+src/order_consumer/config.py
+src/order_consumer/main.py
+src/order_system_consumer.egg-info/PKG-INFO
+src/order_system_consumer.egg-info/SOURCES.txt
+src/order_system_consumer.egg-info/dependency_links.txt
+src/order_system_consumer.egg-info/requires.txt
+src/order_system_consumer.egg-info/top_level.txt
+tests/test_consumer_entrypoint.py

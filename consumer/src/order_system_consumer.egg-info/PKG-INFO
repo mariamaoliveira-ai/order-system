@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: order-system-consumer
+Version: 0.1.0
+Summary: Kafka consumer scaffold for the order system
+Requires-Python: >=3.9
+Requires-Dist: confluent-kafka<3,>=2.6
+Requires-Dist: prometheus-client<1,>=0.21
+Requires-Dist: pydantic-settings<3,>=2.6
+Requires-Dist: sqlalchemy<3,>=2.0
+Requires-Dist: psycopg[binary]<4,>=3.2
+Provides-Extra: test
+Requires-Dist: pytest<9,>=8.3; extra == "test"
+Provides-Extra: dev
+Requires-Dist: ruff<1,>=0.8; extra == "dev"
