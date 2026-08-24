@@ -1,7 +1,6 @@
 import enum
-from sqlalchemy import Column, Integer, DateTime, Enum, func
-from sqlalchemy.dialects.postgresql import JSONB
-from app.database import Base
+from sqlalchemy import Column, Integer, DateTime, Enum, Text, func
+from app.database.base import Base
 
 class OrderStatus(str, enum.Enum):
     PENDING = "PENDING"
@@ -13,7 +12,7 @@ class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True, index=True)
-    items = Column(JSONB, nullable=False)
+    items = Column(Text, nullable=False)
     status = Column(
         Enum(OrderStatus, name="order_status_enum"), 
         nullable=False, 
