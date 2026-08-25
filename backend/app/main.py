@@ -1,9 +1,7 @@
 from fastapi import FastAPI
+from app.controllers.order_controller import router as order_router
+
 
 app = FastAPI(title="Order System API", version="0.1.0")
 
-
-@app.get("/health", tags=["system"])
-def health() -> dict[str, str]:
-    """Report that the API process is running."""
-    return {"status": "ok"}
+app.include_router(order_router)
