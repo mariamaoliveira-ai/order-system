@@ -18,12 +18,6 @@ OrderServiceDep = Annotated[OrderService, Depends(getOrderService)]
 
 @router.post("/create", status_code=status.HTTP_201_CREATED, response_model=OrderResponse)
 def createOrder(order: Order, service: OrderServiceDep):
-    try:
-        return service.createOrder(order)
-    except (OperationalError, ConnectionError):
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Connection Error."
-        )
-    
+    return service.createOrder(order)
+   
     

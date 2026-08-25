@@ -41,10 +41,8 @@ def test_shouldReturnValidationErrorWhenOrderItemsAreEmpty(client) -> None:
 	assert response.json()["detail"]
 
 
-def test_shouldReturnServiceUnavailableWhenOrderBackendIsDown(client, mockOrderService) -> None:
-    mockOrderService.createOrder.side_effect = OperationalError("DB is down", 
-                                                                params=None, 
-                                                                orig=None)
+def test_shouldReturn503WhenExceptionOccurs(client, mockOrderService) -> None:
+    mockOrderService.createOrder.side_effect = Exception()
     
     response = client.post("/orders/create", json={"items": "1x Livro"})
 
