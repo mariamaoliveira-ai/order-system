@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import OperationalError
 
 from typing import Annotated
 
@@ -14,8 +15,15 @@ def getOrderService(db: Session = Depends(get_db)) -> OrderService:
 
 OrderServiceDep = Annotated[OrderService, Depends(getOrderService)]
 
+
 @router.post("/create", status_code=status.HTTP_201_CREATED, response_model=OrderResponse)
 def createOrder(order: Order, service: OrderServiceDep):
-    return service.createOrder(order)
+    try:
+        return service.createOrder(order)
+    except (OperationalError, ConnectionError):
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Connection Error."
+        )
     
     
